@@ -1,0 +1,36 @@
+Sub HideColumnsAndTotalRowsAndConvertValuesAndMoveColumns()
+    Dim lastRow As Long, i As Long
+    
+    ' Hide columns B and C
+    Columns("B:C").Hidden = True
+    
+    ' Determine the last row of data in the worksheet
+    lastRow = ActiveSheet.Cells(Rows.Count, 1).End(xlUp).Row
+    
+    ' Hide all rows that contain the word "Total"
+    For i = 1 To lastRow
+        If InStr(1, LCase(Cells(i, 1).Value), "total") > 0 Then
+            Rows(i).Hidden = True
+        End If
+    Next i
+    
+    ' Convert values in the F column to non-accounting format
+    Columns("F:F").NumberFormat = "#,##0.00"
+    
+    ' Move columns Term, WO Amount, and Line Pay Num to the right
+    Range("E1:E" & lastRow).Cut
+    Range("F1").Insert Shift:=xlToRight
+    
+    Range("F1:F" & lastRow).Cut
+    Range("G1").Insert Shift:=xlToRight
+    
+    Range("G1:G" & lastRow).Cut
+    Range("E1").Insert Shift:=xlToRight
+    
+    ' Adjust the column widths
+    Columns("D:J").AutoFit
+    
+    ' Adjust the order of columns A-B and K-M if necessary
+    ' (you'll need to adjust the column indices in the code accordingly)
+End Sub
+
