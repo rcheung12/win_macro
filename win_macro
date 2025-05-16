@@ -1,0 +1,121 @@
+import pyautogui as pa
+import pyperclip as pyclip
+from tqdm import tqdm
+import random
+import time
+
+# Generate a random number between 5 and 10
+sleep_time = random.uniform(5, 8)
+
+# Pause execution for the generated time
+
+
+# Move mouse to upper left corner to activate FAILSAFE
+pa.FAILSAFE = True
+
+# User input on how many rows (always add + 1)
+num_repetitions = int(input("Enter the number of lines: "))
+
+for i in tqdm(range(num_repetitions + 1), desc='Processing lines'):
+    # Excel UID copy
+    pa.sleep(sleep_time)
+    pa.keyDown('ctrl')
+    pa.press('c')
+    pa.keyUp('ctrl')
+
+    # Banner paste using typewriter function
+    pa.click(x=4194, y=25)
+    copied_text = pyclip.paste()
+    pa.sleep(sleep_time)
+    pa.typewrite(copied_text)
+    pa.sleep(sleep_time)
+
+    # 'Enter' Banner confidential warning
+    pa.hotkey('enter')
+
+    # Accessing account
+    pa.hotkey('alt', 'pagedown', interval=2)
+    # Creating new row
+    pa.hotkey('f6', interval=2)
+
+    # Excel "Write OFF" copy
+    pa.click(x=3328, y=34)
+    pa.press('right')
+    pa.keyDown('ctrl')
+    pa.press('c')
+    pa.keyUp('ctrl')
+
+    # Banner for paste
+    pa.click(x=4194, y=25, interval=2)
+    copied_text = pyclip.paste()
+    pa.sleep(sleep_time)
+    pa.typewrite(copied_text)
+    pa.sleep(sleep_time)
+    pa.hotkey('tab', interval=2)
+    #pa.hotkey('tab')
+
+    # Excel for "line pay" copy
+    pa.click(x=3328, y=34)
+    pa.press('right')
+    pa.keyDown('ctrl')
+    pa.press('c')
+    pa.keyUp('ctrl')
+
+# Banner for paste
+    pa.click(x=4194, y=25, interval=2)
+    copied_text = pyclip.paste()
+    pa.sleep(sleep_time)
+    pa.typewrite(copied_text)
+    pa.sleep(sleep_time)
+    #pa.hotkey('tab', interval=2)
+
+# Excel for "term" copy
+    pa.click(x=3328, y=34)
+    pa.press('right')
+    pa.keyDown('ctrl')
+    pa.press('c')
+    pa.keyUp('ctrl')
+
+# Banner to paste
+    pa.click(x=4194, y=25)
+    copied_text = pyclip.paste()
+    pa.sleep(sleep_time)
+    pa.typewrite(copied_text)
+    pa.sleep(sleep_time)
+    #pa.hotkey('tab')
+    pa.sleep(sleep_time)
+
+# Excel for "amount" copy
+    pa.click(x=3328, y=34)
+    pa.press('right')
+    pa.keyDown('ctrl')
+    pa.press('c')
+    pa.keyUp('ctrl')
+
+    # Banner for paste
+    pa.click(x=4194, y=25)
+    copied_text = pyclip.paste()
+    pa.sleep(sleep_time)
+    pa.typewrite(copied_text)
+    pa.sleep(sleep_time)
+
+    # Save Account and New Account restart
+    pa.hotkey('f10', interval=3)
+    pa.hotkey('f5')
+
+    # Excel set up for new line
+    pa.click(x=3328, y=34)
+    pa.press('down')
+    pa.keyDown('ctrl')
+    pa.press('left')
+    pa.keyUp('ctrl')
+
+    # Bold final UID
+    pa.keyDown('ctrl')
+    pa.press('b')
+    pa.keyUp('ctrl')
+
+# End
+# Repeat
+
+
